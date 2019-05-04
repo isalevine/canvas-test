@@ -10,16 +10,17 @@ class Canvas01 extends Component {
     this.rect = null
     this.canvas = null
 
-    this.currentPosition = {x: 0, y: 0}
-    this.previousPosition = {x: 0, y: 0}
-
-    this.lineStart = {x: 0, y: 0}
-    this.lineEnd = {x: 0, y: 0}
+    // this.currentPosition = {x: 0, y: 0}
+    // this.previousPosition = {x: 0, y: 0}
+    //
+    // this.lineStart = {x: 0, y: 0}
+    // this.lineEnd = {x: 0, y: 0}
 
     this.drawing = false
     // this.pressed = false
     // this.moving = false
 
+    // line history
     this.paths = []
 
   }
@@ -148,17 +149,13 @@ class Canvas01 extends Component {
   }
 
   sendPaths = () => {
-    fetch("https://localhost:3000/canvas", {
+    fetch("http://localhost:3000/canvas", {
       method: "POST",
       headers: {
-        'Content-type': 'application/json',
+        'Content-Type': 'application/json',
         'Accept': 'application/json'
       },
       body: JSON.stringify(this.paths)
-    })
-    .then(res => res.json())
-    .then(data => {
-      console.log("fetch returned this data: ", data)
     })
   }
 
